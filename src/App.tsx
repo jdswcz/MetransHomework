@@ -156,17 +156,14 @@ const App: React.FC = () => {
         const fetchData = async () => {
             setIsLoading(true);
 
-            try
-            {
+            try {
                 const response = await fetch('https://jsonplaceholder.typicode.com/todos');
                 if (!response.ok) throw new Error('Data could not be fetched');
                 const jsonData = await response.json();
                 setData(jsonData);
-            } catch (err)
-            {
+            } catch (err) {
                 setError(err.message);
-            } finally
-            {
+            } finally {
                 setIsLoading(false);
             }
         };
@@ -291,7 +288,7 @@ const App: React.FC = () => {
         maxWidth: '100%', // Ensures table is not wider than the viewport
         borderCollapse: 'collapse',
         boxShadow: '0 2px 3px rgba(0,0,0,0.1)',
-        marginTop: '20px',
+        marginTop: '5px',
     };
 
     // Holds style for table header
@@ -303,7 +300,16 @@ const App: React.FC = () => {
         borderBottom: '1px solid #ddd',
         textAlign: 'left',
         position: 'relative',
-        height: '40', // Ensure all th elements have the same height
+        boxSizing: 'border-box',
+        height: '40px', // Ensure all th elements have the same height
+    };
+
+    // Style ensuring nice look of table header when it contains add button
+    const thStyleWithButton = {
+        ...thStyle,     
+        justifyContent: 'center', // Center horizontally
+        alignItems: 'center', // Center vertically
+        whiteSpace: 'nowrap', // Prevent wrapping
     };
 
     // Holds style for table header that can be used to sort items
@@ -324,9 +330,15 @@ const App: React.FC = () => {
         textAlign: 'left',
     };
 
+    // Holds style for table cell with buttons
+    const tdWithButtonsStyle = {
+        ...tdStyle,
+        whiteSpace: 'nowrap'
+    };
+
     // Holds style for button
     const buttonStyle = {
-        margin: '0 5px',
+        margin: '0 2px',
         padding: '5px 10px',
         cursor: 'pointer',
     };
@@ -339,15 +351,6 @@ const App: React.FC = () => {
         height: '100vh', // This assumes the error takes the full height of the viewport
         fontSize: '20px',
         color: 'red',
-    };
-
-    // Style ensuring nice look of table header when it contains add button
-    const thStyleWithButton = {
-        ...thStyle,
-        display: 'flex',
-        justifyContent: 'center', // Center horizontally
-        alignItems: 'center', // Center vertically
-        whiteSpace: 'nowrap', // Prevent wrapping
     };
 
     // Style for add new button
@@ -399,7 +402,7 @@ const App: React.FC = () => {
                                     <option value="false">No</option>
                                 </select>
                             </td>
-                            <td style={tdStyle}>
+                            <td style={tdWithButtonsStyle}>
                                 <button style={buttonStyle} onClick={handleSaveNew}>Save</button>
                                 <button style={buttonStyle} onClick={() => setAddingNewItem(false)}>Cancel</button>
                             </td>
@@ -410,7 +413,7 @@ const App: React.FC = () => {
                             <td style={tdStyle}>{getUserRole(item.userId)}</td>
                             <td style={tdStyle}>{item.title}</td>
                             <td style={tdStyle}>{item.completed ? 'Yes' : 'No'}</td>
-                            <td style={tdStyle}>
+                            <td style={tdWithButtonsStyle}>
                                 <button onClick={() => handleEdit(item)} style={buttonStyle}>Edit</button>
                                 <button onClick={() => handleDelete(item.id)} style={buttonStyle}>Delete</button>
                             </td>
