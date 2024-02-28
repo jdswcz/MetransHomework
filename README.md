@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# Metrans intro task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is just small task to prove skills. The task was:
 
-Currently, two official plugins are available:
+- To create table showing data from https://jsonplaceholder.typicode.com/todos
+- To convert user ID values to string (1 = admin, 2 = tester, default = unknown)
+- Add CRUD operations (add/edit/delete)
+- Allow to sort by title column
+- Comment the code well
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Solution details
 
-## Expanding the ESLint configuration
+- Standard TypeScript/React/Vite project template was used
+- You can find the app logic in App.tsx
+- Solution fetches the JSON from specified URL.
+- Solution implements modal window for editing and in row controls for adding record.
+- Solution validates the input of add/edit operations
+- Deleting row requires the confirmation
+- Sorting is implemented for title column as requested
+- Extra work was done to make everything nice looking
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Git usage note
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Typically, I use different branch for changes before merging/commiting the code to master, however, this is just a small task.
