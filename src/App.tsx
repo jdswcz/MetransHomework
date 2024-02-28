@@ -381,7 +381,7 @@ const App: React.FC = () => {
                         <th style={thStyle}>Completed</th>
                         <th style={thStyleWithButton}>
                             Actions
-                            <button onClick={handleAdd} style={addButtonStyle}>
+                            <button onClick={handleAdd} style={addButtonStyle} className='addButton'>
                                 +
                             </button>
                         </th>

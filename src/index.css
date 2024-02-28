@@ -46,12 +46,20 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.addButton:hover {
+    color: white;
+    transform: scale(1.05); /* Slightly increase the size */
+    transition: all 0.2s ease-in-out; /* Smooth transition for hover effect */
 }
 
 @media (prefers-color-scheme: light) {
