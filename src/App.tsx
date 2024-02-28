@@ -302,6 +302,8 @@ const App: React.FC = () => {
         padding: '10px 20px',
         borderBottom: '1px solid #ddd',
         textAlign: 'left',
+        position: 'relative',
+        height: '40', // Ensure all th elements have the same height
     };
 
     // Holds style for table header that can be used to sort items
@@ -339,6 +341,28 @@ const App: React.FC = () => {
         color: 'red',
     };
 
+    // Style ensuring nice look of table header when it contains add button
+    const thStyleWithButton = {
+        ...thStyle,
+        display: 'flex',
+        justifyContent: 'center', // Center horizontally
+        alignItems: 'center', // Center vertically
+        whiteSpace: 'nowrap', // Prevent wrapping
+    };
+
+    // Style for add new button
+    const addButtonStyle = {
+        ...buttonStyle,
+        padding: '5px 10px',
+        fontSize: '1em',
+        margin: '0 5px', // Same margin as for the "Actions" label
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        innerHeight: '4px',
+    };
+
     // Displays loading or error message and quits execution
     if (isLoading) return <div style={{ ...errorStyle, color: 'black' }}>Loading...</div>;
     if (error) return <div style={errorStyle}>Error: {error}</div>;
@@ -352,13 +376,11 @@ const App: React.FC = () => {
                         <th style={thStyle}>User ID</th>
                         <th style={sortableThStyle} onClick={toggleSort} onMouseOver={toggleHover} onMouseOut={toggleMouseOut}>Title</th>
                         <th style={thStyle}>Completed</th>
-                        <th style={thStyle}>
+                        <th style={thStyleWithButton}>
                             Actions
-                       
-                                <button onClick={handleAdd} style={{ ...buttonStyle, marginLeft: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', fontSize: '1em' }}>
-                                    Add New
-                                </button>
-                           
+                            <button onClick={handleAdd} style={addButtonStyle}>
+                                +
+                            </button>
                         </th>
                     </tr>
                 </thead>
